@@ -1,0 +1,332 @@
+{
+  "multiDay": true,
+  "lastActiveDay": 1,
+  "days": {
+    "1": {
+      "title": "第1天段考時程",
+      "titleBold": true,
+      "titleColor": "rgb(44, 62, 80)",
+      "leftBg": "rgb(255, 255, 255)",
+      "rightBg": "rgb(240, 242, 245)",
+      "panelTextColor": "inherit",
+      "tableFontSize": "16px",
+      "isLocked": false,
+      "colWidths": [
+        "25%",
+        "20%",
+        "25%",
+        "30%"
+      ],
+      "table": [
+        {
+          "subject": "國文",
+          "time": "08:15-09:00",
+          "bold": false,
+          "color": "rgb(10, 10, 10)"
+        },
+        {
+          "subject": "英文",
+          "time": "09:10-09:55",
+          "bold": false,
+          "color": "rgb(0, 0, 0)"
+        },
+        {
+          "subject": "自習",
+          "time": "10:05-10:50",
+          "bold": false,
+          "color": "rgb(0, 0, 0)"
+        },
+        {
+          "subject": "數學",
+          "time": "11:00-11:45",
+          "bold": false,
+          "color": ""
+        },
+        {
+          "subject": "自習",
+          "time": "13:00-13:45",
+          "bold": false,
+          "color": ""
+        },
+        {
+          "subject": "社會",
+          "time": "1355:00-14:40",
+          "bold": false,
+          "color": ""
+        },
+        {
+          "subject": "自習",
+          "time": "14:55-15:40",
+          "bold": false,
+          "color": ""
+        },
+        {
+          "subject": "自然",
+          "time": "15:50-16:35",
+          "bold": false,
+          "color": ""
+        }
+      ],
+      "widgets": [
+        {
+          "type": "digital",
+          "top": "80px",
+          "left": "22px",
+          "width": "414px",
+          "height": "258px",
+          "content": "",
+          "extra": "",
+          "fontSize": "16px",
+          "hacker": false
+        },
+        {
+          "type": "announce",
+          "top": "76px",
+          "left": "492px",
+          "width": "220px",
+          "height": "220px",
+          "content": "考試期間請保持安靜\n手機請關機",
+          "extra": "注意事項",
+          "fontSize": "16px",
+          "hacker": false
+        },
+        {
+          "type": "analog",
+          "top": "355px",
+          "left": "37px",
+          "width": "220px",
+          "height": "220px",
+          "content": "",
+          "extra": "",
+          "fontSize": "16px",
+          "hacker": false
+        },
+        {
+          "type": "note",
+          "top": "346px",
+          "left": "526px",
+          "width": "170px",
+          "height": "152px",
+          "content": "應到:25\n實到:24\n缺考座號:5",
+          "extra": "",
+          "fontSize": "16px",
+          "hacker": false
+        }
+      ]
+    },
+    "2": {
+      "title": "第2天段考時程",
+      "titleBold": false,
+      "titleColor": "inherit",
+      "leftBg": "rgb(240, 242, 245)",
+      "rightBg": "rgb(232, 245, 233)",
+      "panelTextColor": "rgb(51, 51, 51)",
+      "tableFontSize": "16px",
+      "isLocked": false,
+      "colWidths": [
+        "25%",
+        "20%",
+        "25%",
+        "30%"
+      ],
+      "table": [
+        {
+          "subject": "國文",
+          "time": "08:15-09:00",
+          "bold": true,
+          "color": "rgb(231, 76, 60)"
+        },
+        {
+          "subject": "英文",
+          "time": "09:10-09:55",
+          "bold": false,
+          "color": "rgb(0, 0, 0)"
+        },
+        {
+          "subject": "自習",
+          "time": "10:05-10:50",
+          "bold": false,
+          "color": "rgb(0, 0, 0)"
+        },
+        {
+          "subject": "數學",
+          "time": "11:00-11:45",
+          "bold": false,
+          "color": ""
+        },
+        {
+          "subject": "自習",
+          "time": "13:00-13:45",
+          "bold": false,
+          "color": ""
+        },
+        {
+          "subject": "社會",
+          "time": "1355:00-14:40",
+          "bold": false,
+          "color": ""
+        },
+        {
+          "subject": "自習",
+          "time": "14:55-15:40",
+          "bold": false,
+          "color": ""
+        },
+        {
+          "subject": "自然",
+          "time": "15:50-16:35",
+          "bold": false,
+          "color": ""
+        }
+      ],
+      "widgets": [
+        {
+          "type": "digital",
+          "top": "82px",
+          "left": "18px",
+          "width": "732px",
+          "height": "255px",
+          "content": "",
+          "extra": "",
+          "fontSize": "16px",
+          "hacker": false
+        },
+        {
+          "type": "analog",
+          "top": "345px",
+          "left": "23px",
+          "width": "338px",
+          "height": "288px",
+          "content": "",
+          "extra": "",
+          "fontSize": "16px",
+          "hacker": false
+        },
+        {
+          "type": "announce",
+          "top": "339px",
+          "left": "373px",
+          "width": "369px",
+          "height": "304px",
+          "content": "",
+          "extra": "今日公告",
+          "fontSize": "16px",
+          "hacker": false
+        }
+      ]
+    },
+    "3": {
+      "title": "第3天段考時程",
+      "titleBold": false,
+      "titleColor": "inherit",
+      "leftBg": "rgb(255, 243, 224)",
+      "rightBg": "linear-gradient(135deg, rgb(161, 196, 253) 0%, rgb(194, 233, 251) 100%)",
+      "panelTextColor": "rgb(51, 51, 51)",
+      "tableFontSize": "16px",
+      "isLocked": false,
+      "colWidths": [
+        "25%",
+        "20%",
+        "25%",
+        "30%"
+      ],
+      "table": [
+        {
+          "subject": "國文",
+          "time": "08:15-09:00",
+          "bold": true,
+          "color": "rgb(231, 76, 60)"
+        },
+        {
+          "subject": "英文",
+          "time": "09:10-09:55",
+          "bold": false,
+          "color": "rgb(0, 0, 0)"
+        },
+        {
+          "subject": "自習",
+          "time": "10:05-10:50",
+          "bold": false,
+          "color": "rgb(0, 0, 0)"
+        },
+        {
+          "subject": "數學",
+          "time": "11:00-11:45",
+          "bold": false,
+          "color": ""
+        },
+        {
+          "subject": "自習",
+          "time": "13:00-13:45",
+          "bold": false,
+          "color": ""
+        },
+        {
+          "subject": "社會",
+          "time": "1355:00-14:40",
+          "bold": false,
+          "color": ""
+        },
+        {
+          "subject": "自習",
+          "time": "14:55-15:40",
+          "bold": false,
+          "color": ""
+        },
+        {
+          "subject": "自然",
+          "time": "15:50-16:35",
+          "bold": false,
+          "color": ""
+        }
+      ],
+      "widgets": [
+        {
+          "type": "analog",
+          "top": "88px",
+          "left": "18px",
+          "width": "220px",
+          "height": "220px",
+          "content": "",
+          "extra": "",
+          "fontSize": "16px",
+          "hacker": false
+        },
+        {
+          "type": "digital",
+          "top": "359px",
+          "left": "25px",
+          "width": "702px",
+          "height": "268px",
+          "content": "",
+          "extra": "",
+          "fontSize": "16px",
+          "hacker": true
+        },
+        {
+          "type": "note",
+          "top": "93px",
+          "left": "281px",
+          "width": "220px",
+          "height": "220px",
+          "content": "",
+          "extra": "",
+          "fontSize": "16px",
+          "hacker": false
+        },
+        {
+          "type": "announce",
+          "top": "96px",
+          "left": "530px",
+          "width": "220px",
+          "height": "220px",
+          "content": "",
+          "extra": "今日公告",
+          "fontSize": "16px",
+          "hacker": false
+        }
+      ]
+    }
+  },
+  "timestamp": 1768193087988
+}
