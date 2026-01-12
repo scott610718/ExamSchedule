@@ -1,6 +1,6 @@
 {
   "multiDay": true,
-  "lastActiveDay": 3,
+  "lastActiveDay": 1,
   "days": {
     "1": {
       "title": "第1天段考時程",
@@ -21,8 +21,8 @@
         {
           "subject": "國文",
           "time": "08:15-09:00",
-          "bold": true,
-          "color": "rgb(231, 76, 60)"
+          "bold": false,
+          "color": "rgb(10, 10, 10)"
         },
         {
           "subject": "英文",
@@ -118,9 +118,9 @@
       "title": "第2天段考時程",
       "titleBold": false,
       "titleColor": "inherit",
-      "leftBg": "",
-      "rightBg": "",
-      "panelTextColor": "inherit",
+      "leftBg": "rgb(240, 242, 245)",
+      "rightBg": "rgb(232, 245, 233)",
+      "panelTextColor": "rgb(51, 51, 51)",
       "tableFontSize": "16px",
       "isLocked": false,
       "colWidths": [
@@ -179,15 +179,49 @@
           "color": ""
         }
       ],
-      "widgets": []
+      "widgets": [
+        {
+          "type": "digital",
+          "top": "82px",
+          "left": "18px",
+          "width": "732px",
+          "height": "255px",
+          "content": "",
+          "extra": "",
+          "fontSize": "16px",
+          "hacker": false
+        },
+        {
+          "type": "analog",
+          "top": "345px",
+          "left": "23px",
+          "width": "338px",
+          "height": "288px",
+          "content": "",
+          "extra": "",
+          "fontSize": "16px",
+          "hacker": false
+        },
+        {
+          "type": "announce",
+          "top": "339px",
+          "left": "373px",
+          "width": "369px",
+          "height": "304px",
+          "content": "",
+          "extra": "今日公告",
+          "fontSize": "16px",
+          "hacker": false
+        }
+      ]
     },
     "3": {
       "title": "第3天段考時程",
       "titleBold": false,
       "titleColor": "inherit",
-      "leftBg": "",
-      "rightBg": "",
-      "panelTextColor": "inherit",
+      "leftBg": "rgb(255, 243, 224)",
+      "rightBg": "linear-gradient(135deg, rgb(161, 196, 253) 0%, rgb(194, 233, 251) 100%)",
+      "panelTextColor": "rgb(51, 51, 51)",
       "tableFontSize": "16px",
       "isLocked": false,
       "colWidths": [
@@ -246,8 +280,53 @@
           "color": ""
         }
       ],
-      "widgets": []
+      "widgets": [
+        {
+          "type": "analog",
+          "top": "88px",
+          "left": "18px",
+          "width": "220px",
+          "height": "220px",
+          "content": "",
+          "extra": "",
+          "fontSize": "16px",
+          "hacker": false
+        },
+        {
+          "type": "digital",
+          "top": "359px",
+          "left": "25px",
+          "width": "702px",
+          "height": "268px",
+          "content": "",
+          "extra": "",
+          "fontSize": "16px",
+          "hacker": true
+        },
+        {
+          "type": "note",
+          "top": "93px",
+          "left": "281px",
+          "width": "220px",
+          "height": "220px",
+          "content": "",
+          "extra": "",
+          "fontSize": "16px",
+          "hacker": false
+        },
+        {
+          "type": "announce",
+          "top": "96px",
+          "left": "530px",
+          "width": "220px",
+          "height": "220px",
+          "content": "",
+          "extra": "今日公告",
+          "fontSize": "16px",
+          "hacker": false
+        }
+      ]
     }
   },
-  "timestamp": 1768192594097
+  "timestamp": 1768193087988
 }
