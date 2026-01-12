@@ -1,2 +1,2 @@
-# ExamSchedule
-ExamSchedule table
+# 段考時程表
+段考時程表，需修改請洽資訊組
