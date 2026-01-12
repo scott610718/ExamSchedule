@@ -1,9 +1,9 @@
-<!DOCTYPE html>
+
 <html lang="zh-TW">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>114學年度第三次段考時程表Pro</title>
+    <title>段考時程表Pro (檔案版)</title>
     <style>
         /* --- 1. 基礎與 RWD 佈局 --- */
         :root { --sidebar-bg: #fcfcfc; --main-bg: #f0f2f5; --text-color: #333; }
@@ -29,32 +29,21 @@
         .sidebar-fixed { background: var(--sidebar-bg); border-right: 2px solid #ddd; color: var(--text-color); }
         .main-board { background: var(--main-bg); overflow: hidden; }
 
-        /* --- 2. 介面遮罩與動畫 --- */
-        #login-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.92); z-index: 9999; display: flex; justify-content: center; align-items: center; color: white; }
-        #save-loading { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); z-index: 10000; flex-direction: column; justify-content: center; align-items: center; color: white; }
-        .spinner { width: 40px; height: 40px; border: 4px solid #f3f3f3; border-top: 4px solid #27ae60; border-radius: 50%; animation: spin 1s linear infinite; margin-bottom: 10px; }
-        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-
-        .login-box { background: #fff; color: #333; padding: 40px; border-radius: 12px; width: 400px; text-align: center; }
-        .login-box h2 { margin-bottom: 10px; color: #2c3e50; }
-        .login-box input { width: 100%; padding: 12px; margin: 10px 0; border: 1px solid #ddd; border-radius: 6px; font-size: 16px; }
-        
-        .btn-primary { background: #3498db; color: white; border: none; padding: 12px; border-radius: 6px; width: 100%; cursor: pointer; font-size: 16px; font-weight: bold; margin-bottom: 8px; }
-        .btn-guest { background: #95a5a6; color: white; border: none; padding: 12px; border-radius: 6px; width: 100%; cursor: pointer; font-size: 14px; margin-bottom: 8px; }
-        .btn-reg-mode { background: #ecf0f1; color: #2c3e50; border: 1px solid #bdc3c7; padding: 10px; border-radius: 6px; width: 100%; cursor: pointer; font-size: 14px; font-weight: bold; }
-
-        /* --- 3. 工具列與表格 --- */
+        /* --- 2. 工具列與表格 --- */
         .toolbar { background: rgba(255,255,255,0.85); padding: 8px; border-radius: 8px; margin-bottom: 15px; display: flex; gap: 5px; flex-wrap: wrap; align-items: center; color: #333 !important; }
         .btn { padding: 5px 8px; cursor: pointer; border: 1px solid #ccc; border-radius: 4px; background: white; font-size: 12px; font-weight: bold; color: #333; }
         .btn:hover { background: #f8f9fa; }
+        
+        /* 功能按鈕顏色 */
         .btn-save { background: #27ae60 !important; color: white !important; border: none; }
+        .btn-load { background: #2980b9 !important; color: white !important; border: none; }
         .btn-lock { background: #f39c12 !important; color: white !important; border: none; }
         .btn-picker { background: #9b59b6 !important; color: white !important; border: none; }
+        .btn-reset { background: #e74c3c !important; color: white !important; border: none; margin-left: auto; }
 
         .title-area { display: flex; align-items: center; gap: 8px; }
         .title-ctrl { display: flex; gap: 3px; }
-        .top-account-info { margin-left: auto; font-size: 12px; font-weight: bold; opacity: 0.8; padding-right: 5px; }
-
+        
         .exam-table { width: 100%; border-collapse: collapse; background: rgba(255,255,255,0.2); table-layout: fixed; color: inherit; }
         .exam-table th, .exam-table td { border: 1px solid rgba(150,150,150,0.5); padding: 6px; text-align: center; overflow-wrap: anywhere; vertical-align: middle; position: relative; }
         .exam-table td:nth-child(1) { text-align: left; padding-left: 8px; }
@@ -68,7 +57,7 @@
         .btn-sm { width: 26px; height: 26px; border: 1px solid #ddd; background: #fff; cursor: pointer; border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: bold; color: #333; position: relative; overflow: hidden; flex-shrink: 0; }
         .btn-sm input[type="color"] { position: absolute; top: -10px; left: -10px; width: 50px; height: 50px; cursor: pointer; opacity: 0; }
 
-        /* --- 4. 小工具 --- */
+        /* --- 3. 小工具 --- */
         .widget { position: absolute; background: white; border-radius: 15px; box-shadow: 0 10px 25px rgba(0,0,0,0.15); padding: 35px 15px 15px; min-width: 100px; resize: both; overflow: hidden; z-index: 10; color: #333; }
         .widget-handle { position: absolute; top: 0; left: 0; width: 100%; height: 35px; background: rgba(0,0,0,0.03); cursor: move; }
         .widget-ctrl { position: absolute; top: 6px; right: 8px; display: flex; gap: 4px; z-index: 30; }
@@ -123,7 +112,6 @@
         .day-btn-copy { background: #6c5ce7; color: #ecf0f1; border-color: #6c5ce7; font-weight: bold; }
         .day-btn-copy:hover { background: #a29bfe; color: white; }
 
-        /* 新增：Footer 連結樣式與版本標籤 */
         .footer-link { color: #ecf0f1; text-decoration: none; border-bottom: 1px dashed #7f8c8d; transition: all 0.3s; }
         .footer-link:hover { color: #f1c40f; border-bottom: 1px solid #f1c40f; }
         .version-tag { position: absolute; left: 15px; opacity: 0.3; font-family: monospace; letter-spacing: 1px; }
@@ -132,24 +120,6 @@
 <body id="main-body">
 
 <div id="mobile-clock-header">00:00:00</div>
-
-<div id="save-loading">
-    <div class="spinner"></div>
-    <div id="loading-text">雲端存檔中...</div>
-</div>
-
-<div id="login-overlay">
-    <div class="login-box">
-        <h2 id="auth-title">登入儀表板</h2>
-        <div id="input-area">
-            <input type="text" id="user-id" placeholder="帳號 (流水號 0001)">
-            <input type="password" id="user-pw" placeholder="密碼">
-        </div>
-        <button type="button" class="btn-primary" id="auth-main-btn" onclick="window.handleAuth()">進入系統</button>
-        <button type="button" class="btn-guest" id="guest-btn" onclick="window.handleGuestLogin()">訪客登入</button>
-        <button type="button" class="btn-reg-mode" id="auth-toggle-btn" onclick="window.toggleAuthMode()">註冊</button>
-    </div>
-</div>
 
 <div class="dashboard-container">
     <aside class="panel sidebar-fixed" id="left-panel">
@@ -166,9 +136,13 @@
             <button class="btn" onclick="window.changeFontSize(-2)">A-</button>
             <button class="btn" onclick="window.openBgMenu('left', event)">🎨背景</button>
             <button class="btn btn-lock" id="btn-lock" onclick="window.toggleLock()">🔓 解鎖中</button>
-            <button class="btn btn-save" onclick="window.saveData()">💾存檔</button>
-            <span class="top-account-info" id="top-display-id">ID: ----</span>
-            <button class="btn" onclick="window.logout()">登出</button>
+            
+            <!-- 檔案操作區 -->
+            <button class="btn btn-save" onclick="window.saveToFile()">💾 下載設定</button>
+            <button class="btn btn-load" onclick="document.getElementById('file-input').click()">📂 讀取設定</button>
+            <input type="file" id="file-input" accept=".txt,.json" style="display: none;" onchange="window.handleFileSelect(this)">
+            
+            <button class="btn btn-reset" onclick="window.resetToEmpty()">🗑️ 清空</button>
         </div>
         <table class="exam-table" id="exam-table">
             <thead>
@@ -216,7 +190,7 @@
     </div>
 
     <footer class="footer">
-        <span class="version-tag">v.34版</span>
+        <span class="version-tag">File_v1.0</span>
         <div class="day-switcher">
             <button class="day-btn day-btn-copy" onclick="window.copyDayOne()" title="將第1天內容複製到這裡">📥複製第1天</button>
             <button class="day-btn active" id="btn-day-1" onclick="window.switchDay(1)">第一天</button>
@@ -224,110 +198,115 @@
             <button class="day-btn" id="btn-day-3" onclick="window.switchDay(3)">第三天</button>
         </div>
         <div>
-            帳號：<span id="display-id">---</span> | 
-            <a href="https://www.facebook.com/share/1K5MsceXxS/?mibextid=wwXIfr" target="_blank" class="footer-link">奕鈞老師製作</a> 
-            &copy; 2026
+            檔案模式 (自動讀取 dashboard_data.txt) | 
+            <a href="#" class="footer-link">單純網頁版</a> 
         </div>
     </footer>
 </div>
 
 <script>
-    const GAS_URL = 'https://script.google.com/macros/s/AKfycbwN2TyQCQSZ8X8oTMzOPLoSv4upcRO5TuI3Fogve-nygWoWh5iX1ZrLslhMDgnwrzkWGw/exec'; 
-
-    var currentUser = { id: '', pw: '' };
-    var isRegisterMode = false;
+    // --- 1. 初始化與全域變數 ---
+    const DEFAULT_FILENAME = 'dashboard_data.txt';
     var activePanelId = '';
     var isLocked = false;
-    
     var currentDay = 1;
     var allDaysData = { 1: null, 2: null, 3: null };
 
-    // --- 1. 登入系統 ---
-    window.toggleAuthMode = function() {
-        isRegisterMode = !isRegisterMode;
-        var authTitle = document.getElementById('auth-title');
-        var inputArea = document.getElementById('input-area');
-        var mainBtn = document.getElementById('auth-main-btn');
-        var guestBtn = document.getElementById('guest-btn');
-        var toggleBtn = document.getElementById('auth-toggle-btn');
+    // 頁面載入時執行
+    window.onload = function() {
+        initResizableTable();
+        loadDefaultConfig(); // 嘗試讀取預設檔案
+    };
 
-        if (isRegisterMode) {
-            authTitle.innerText = "設定新密碼";
-            inputArea.innerHTML = '<p style="font-size:15px; color:#e67e22; margin-bottom:10px; font-weight:bold;">系統會配發 4 個數字的帳號給你</p>' +
-                                '<input type="password" id="user-pw" placeholder="請設定 4 位數字密碼 (如 0523)" maxlength="4">';
-            mainBtn.innerText = "獲取帳號並登入";
-            guestBtn.style.display = "none";
-            toggleBtn.innerText = "返回登入";
-        } else {
-            authTitle.innerText = "登入儀表板";
-            inputArea.innerHTML = '<input type="text" id="user-id" placeholder="帳號 (流水號 0001)">' +
-                                '<input type="password" id="user-pw" placeholder="密碼">';
-            mainBtn.innerText = "進入系統";
-            guestBtn.style.display = "block";
-            toggleBtn.innerText = "註冊";
+    // --- 2. 檔案存取邏輯 (File API) ---
+    
+    // 下載設定檔
+    window.saveToFile = function() {
+        // 更新當前天數資料
+        allDaysData[currentDay] = window.getCurrentState();
+        
+        var pack = { 
+            multiDay: true, 
+            lastActiveDay: currentDay, 
+            days: allDaysData,
+            timestamp: new Date().getTime()
+        };
+        
+        var jsonStr = JSON.stringify(pack, null, 2); // 格式化 JSON 方便閱讀
+        var blob = new Blob([jsonStr], {type: "text/plain;charset=utf-8"});
+        var url = URL.createObjectURL(blob);
+        
+        var a = document.createElement('a');
+        a.href = url;
+        a.download = DEFAULT_FILENAME;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+    };
+
+    // 手動上傳讀取
+    window.handleFileSelect = function(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function(e) {
+                try {
+                    var data = JSON.parse(e.target.result);
+                    applyDashboardData(data);
+                    alert("✅ 設定檔讀取成功！");
+                } catch (err) {
+                    alert("❌ 檔案格式錯誤，請確認是正確的 JSON 設定檔。");
+                    console.error(err);
+                }
+                input.value = ''; // 清空以允許重複上傳同檔名
+            };
+            reader.readAsText(input.files[0]);
         }
     };
 
-    window.handleAuth = async function() {
-        var idIn = document.getElementById('user-id');
-        var pwIn = document.getElementById('user-pw');
-        var idVal = idIn ? idIn.value : "";
-        var rawPw = pwIn ? pwIn.value : "";
-        var pwVal = rawPw.toString().padStart(4, '0');
-
-        if (isRegisterMode && !/^\d{4}$/.test(pwVal)) { alert("密碼請設定為 4 位數字！"); return; }
-        if (!isRegisterMode && !idVal) { alert("請輸入帳號"); return; }
-        if (!rawPw) { alert("請輸入密碼"); return; }
-
-        var btn = document.getElementById('auth-main-btn');
-        btn.disabled = true; btn.innerText = "連線中...";
-
-        try {
-            var res = await fetch(GAS_URL, { method: 'POST', mode: 'cors', body: JSON.stringify({ action: isRegisterMode ? "register" : "login", userID: idVal, password: pwVal }) });
-            var result = await res.json();
-            if (result.success) {
-                alert(result.message);
-                currentUser.id = (result.userID || idVal).toString().padStart(4, '0');
-                currentUser.pw = pwVal;
-                document.getElementById('display-id').innerText = currentUser.id;
-                document.getElementById('top-display-id').innerText = "ID: " + currentUser.id;
-                document.getElementById('login-overlay').style.display = 'none';
-                
-                if (result.dashboardData) {
-                    var parsed = JSON.parse(result.dashboardData);
-                    if (parsed.multiDay === true) {
-                        allDaysData = parsed.days;
-                        if(!allDaysData[1]) allDaysData[1] = null;
-                        if(!allDaysData[2]) allDaysData[2] = null;
-                        if(!allDaysData[3]) allDaysData[3] = null;
-                        var savedDay = parsed.lastActiveDay || 1;
-                        switchDay(savedDay, true);
-                    } else {
-                        allDaysData[1] = parsed;
-                        switchDay(1, true);
-                    }
-                } else {
-                    switchDay(1, true);
-                }
-            } else { alert(result.message); }
-        } catch (e) { console.error(e); alert("連線失敗！"); }
-        finally { btn.disabled = false; btn.innerText = isRegisterMode ? "獲取帳號" : "進入系統"; }
+    // 自動讀取同目錄檔案
+    window.loadDefaultConfig = function() {
+        fetch(DEFAULT_FILENAME)
+            .then(response => {
+                if (!response.ok) throw new Error("找不到預設檔案");
+                return response.json();
+            })
+            .then(data => {
+                console.log("已載入預設設定檔");
+                applyDashboardData(data);
+            })
+            .catch(error => {
+                console.log("無預設設定檔或無法讀取 (若是直接開啟HTML，這是正常的 CORS 限制):", error);
+                // 讀取失敗則初始化空白
+                switchDay(1, true); 
+            });
     };
 
-    window.handleGuestLogin = function() {
-        currentUser.id = "訪客"; currentUser.pw = "";
-        document.getElementById('display-id').innerText = "訪客 (無存檔功能)";
-        document.getElementById('top-display-id').innerText = "訪客";
-        document.getElementById('login-overlay').style.display = 'none';
-        switchDay(1, true);
+    window.applyDashboardData = function(parsed) {
+        if (parsed.days) {
+            allDaysData = parsed.days;
+            // 確保每一天都有初始值
+            if(!allDaysData[1]) allDaysData[1] = null;
+            if(!allDaysData[2]) allDaysData[2] = null;
+            if(!allDaysData[3]) allDaysData[3] = null;
+            
+            var lastDay = parsed.lastActiveDay || 1;
+            switchDay(lastDay, true);
+        } else {
+            // 舊格式或單日資料
+            allDaysData[1] = parsed;
+            switchDay(1, true);
+        }
+    };
+    
+    window.resetToEmpty = function() {
+        if(confirm("確定要清空目前畫面嗎？\n(不會刪除您的檔案)")) {
+            allDaysData = { 1: null, 2: null, 3: null };
+            switchDay(1, true);
+        }
     };
 
-    window.logout = function() {
-        alert("您的帳號是 " + currentUser.id + "，已登出");
-        location.reload();
-    };
-
-    // --- 2. 存取邏輯 ---
+    // --- 3. 取得目前狀態 (同前版) ---
     window.getCurrentState = function() {
         var titleEl = document.getElementById('db-title');
         var data = {
@@ -371,21 +350,7 @@
         return data;
     }
 
-    window.saveData = async function() {
-        if (!currentUser.id || currentUser.id === "訪客") { alert("訪客無法存檔！"); return; }
-        allDaysData[currentDay] = window.getCurrentState();
-        var pack = { multiDay: true, lastActiveDay: currentDay, days: allDaysData };
-        var jsonStr = JSON.stringify(pack);
-        if (jsonStr.length > 45000) { alert("總資料量過大，請減少部分內容。"); return; } 
-
-        document.getElementById('save-loading').style.display = 'flex';
-        try {
-            var res = await fetch(GAS_URL, { method: 'POST', body: JSON.stringify({ action: "save", userID: currentUser.id, password: currentUser.pw, dashboardData: jsonStr }) });
-            var resJ = await res.json(); alert(resJ.message);
-        } catch (e) { alert("存檔失敗。"); }
-        finally { document.getElementById('save-loading').style.display = 'none'; }
-    };
-
+    // --- 4. 畫面切換與渲染 ---
     window.switchDay = function(dayNum, forceInit) {
         if (!forceInit && currentDay === dayNum) return;
         if (!forceInit) allDaysData[currentDay] = window.getCurrentState();
@@ -397,6 +362,7 @@
         document.getElementById('btn-day-' + dayNum).classList.add('active');
 
         var dataToLoad = allDaysData[dayNum];
+        
         document.querySelectorAll('.widget').forEach(w => w.remove());
         document.getElementById('exam-tbody').innerHTML = "";
 
@@ -405,20 +371,25 @@
         } else {
             document.getElementById('db-title').innerText = "第" + dayNum + "天段考時程";
             document.getElementById('db-title').style.color = "inherit";
+            document.getElementById('db-title').style.fontWeight = "normal";
             document.getElementById('left-panel').style.background = "";
             document.getElementById('right-panel').style.background = "";
+            if(forceInit && !dataToLoad) {
+               window.addTableRow({subject: '考試科目', time: '08:00-09:00'});
+               window.addTableRow({subject: '考試科目', time: '09:20-10:20'});
+               window.addTableRow({subject: '考試科目', time: '10:40-11:40'});
+            }
             window.toggleLock(false);
         }
     };
 
     window.copyDayOne = function() {
         if (currentDay === 1) { alert("你目前就在第1天，不需要複製。"); return; }
-        if (!allDaysData[1]) { alert("第1天還沒有存檔資料，無法複製。"); return; }
-        if (!confirm("確定要將「第1天」的所有設定（科目表、背景）複製覆蓋到目前這一天嗎？\n(原本這一天的內容會消失)")) return;
-        
+        if (!allDaysData[1]) allDaysData[1] = window.getCurrentState();
+        if (!confirm("確定要將「第1天」的所有設定（科目表、背景）複製覆蓋到目前這一天嗎？")) return;
         var copiedData = JSON.parse(JSON.stringify(allDaysData[1]));
         window.renderDashboard(copiedData);
-        alert("複製成功！請記得存檔。");
+        alert("複製成功！");
     };
 
     window.renderDashboard = function(data) {
@@ -435,17 +406,18 @@
         
         document.getElementById('exam-tbody').innerHTML = "";
         
-        if(data.table) data.table.forEach(function(item) { window.addTableRow(item); });
+        if(data.table && data.table.length > 0) {
+            data.table.forEach(function(item) { window.addTableRow(item); });
+        } 
+        
         if(data.widgets) data.widgets.forEach(function(w) { createWidget(w.type, w, w.hacker ? 'hacker' : 'default'); });
         
         window.toggleLock(!!data.isLocked);
     };
-    
-    window.loadDashboard = function(data) { window.renderDashboard(data); };
 
-    // --- 3. UI 功能 ---
-    window.toggleTitleBold = function() { var el = document.getElementById('db-title'); el.style.fontWeight = (el.style.fontWeight === 'bold' ? 'normal' : 'bold'); };
-    window.changeTitleColor = function(c) { document.getElementById('db-title').style.color = c; };
+    // --- 5. UI 功能 (同前版) ---
+    window.toggleTitleBold = function() { if(isLocked)return; var el = document.getElementById('db-title'); el.style.fontWeight = (el.style.fontWeight === 'bold' ? 'normal' : 'bold'); };
+    window.changeTitleColor = function(c) { if(isLocked)return; document.getElementById('db-title').style.color = c; };
 
     window.toggleLock = function(forceLock) {
         isLocked = (typeof forceLock === 'boolean') ? forceLock : !isLocked;
@@ -467,10 +439,8 @@
     };
 
     window.addTableRow = function(data) {
-        // 列數限制檢查
         var currentRows = document.querySelectorAll('#exam-tbody tr').length;
         if (currentRows >= 10) { alert("最多只能新增 10 列科目喔！"); return; }
-
         var tr = document.createElement('tr');
         if(data && data.bold) tr.style.fontWeight = 'bold';
         if(data && data.color) tr.style.color = data.color;
@@ -487,22 +457,14 @@
     window.toggleRowBold = function(btn) { if(isLocked) return; var r = btn.closest('tr'); r.style.fontWeight = (r.style.fontWeight === 'bold' ? 'normal' : 'bold'); };
     window.changeFontSize = function(d) { if(isLocked) return; var t = document.getElementById('exam-table'); var s = parseInt(window.getComputedStyle(t).fontSize) || 16; t.style.fontSize = (s + d) + 'px'; };
     
-    // 背景選單開啟邏輯修正：防止溢出
     window.openBgMenu = function(p, e) {
         if(isLocked) return;
         activePanelId = p + '-panel';
         var m = document.getElementById('bg-selector');
         m.style.display = 'block';
-        
-        // 修正：如果點擊位置靠右，選單向左偏移
-        var menuWidth = 340;
-        var xPos = e.pageX;
-        if (xPos + menuWidth > window.innerWidth) {
-            xPos = e.pageX - menuWidth; 
-        }
-        
-        m.style.left = xPos + 'px';
-        m.style.top = e.pageY + 'px';
+        var menuWidth = 340; var xPos = e.pageX;
+        if (xPos + menuWidth > window.innerWidth) xPos = e.pageX - menuWidth; 
+        m.style.left = xPos + 'px'; m.style.top = e.pageY + 'px';
         e.stopPropagation();
     };
     
@@ -512,7 +474,6 @@
         document.getElementById('bg-selector').style.display = 'none'; 
     };
 
-    // --- 4. 小工具 ---
     function createWidget(type, data, styleType) {
         if (type === 'digital' && styleType === 'default') { if (document.querySelectorAll('.widget-digital:not(.style-hacker)').length >= 1) return alert("白色數位時鐘只能 1 個"); }
         if (type === 'digital' && styleType === 'hacker') { if (document.querySelectorAll('.style-hacker').length >= 1) return alert("駭客數位時鐘只能 1 個"); }
@@ -526,12 +487,10 @@
         var w = document.createElement('div');
         w.className = 'widget widget-' + type;
         if (styleType === 'hacker') w.classList.add('style-hacker');
-        
         w.style.top = data?.top || '100px'; w.style.left = data?.left || '100px';
         
-        if (data && data.width) {
-             w.style.width = data.width; w.style.height = data.height;
-        } else {
+        if (data && data.width) { w.style.width = data.width; w.style.height = data.height; }
+        else {
              if(type === 'digital') { w.style.width='250px'; w.style.height='120px'; }
              else if(type === 'traffic') { w.style.width='200px'; w.style.height='90px'; }
              else if(type === 'picker') { w.style.width='180px'; w.style.height='160px'; }
@@ -559,59 +518,32 @@
             html += (type === 'announce' ? '<input value="'+(data?.extra || '今日公告')+'" style="font-weight:bold; color:#e74c3c" maxlength="20">' : '') +
                     '<textarea maxlength="200" style="height:80%; font-size:'+fs+'">'+(data?.content || '')+'</textarea>';
         } else if (type === 'traffic') {
-            html += '<div class="traffic-container">' +
-                    '<div class="light" data-color="red" onclick="window.toggleLight(this)"></div>' +
-                    '<div class="light" data-color="yellow" onclick="window.toggleLight(this)"></div>' +
-                    '<div class="light" data-color="green" onclick="window.toggleLight(this)"></div>' +
-                    '</div>';
+            html += '<div class="traffic-container"><div class="light" data-color="red" onclick="window.toggleLight(this)"></div><div class="light" data-color="yellow" onclick="window.toggleLight(this)"></div><div class="light" data-color="green" onclick="window.toggleLight(this)"></div></div>';
         } else if (type === 'picker') {
-            html += '<div class="picker-settings">人數: <input type="number" value="'+(data?.extra || 30)+'" min="1" max="999"></div>' +
-                    '<div class="picker-display">0</div>' +
-                    '<button class="btn-draw" onclick="window.runPicker(this)">抽!</button>';
+            html += '<div class="picker-settings">人數: <input type="number" value="'+(data?.extra || 30)+'" min="1" max="999"></div><div class="picker-display">0</div><button class="btn-draw" onclick="window.runPicker(this)">抽!</button>';
         }
         w.innerHTML = html; board.appendChild(w); makeDraggable(w);
-
-        if (type === 'traffic' && data && data.extra) {
-            var target = w.querySelector('.light[data-color="'+data.extra+'"]');
-            if (target) target.classList.add('active');
-        }
+        if (type === 'traffic' && data && data.extra) { var target = w.querySelector('.light[data-color="'+data.extra+'"]'); if (target) target.classList.add('active'); }
     }
 
     window.toggleLight = function(el) {
         if (isLocked) return;
         var parent = el.closest('.traffic-container');
-        if (el.classList.contains('active')) {
-            el.classList.remove('active');
-        } else {
-            parent.querySelectorAll('.light').forEach(l => l.classList.remove('active'));
-            el.classList.add('active');
-        }
+        if (el.classList.contains('active')) { el.classList.remove('active'); }
+        else { parent.querySelectorAll('.light').forEach(l => l.classList.remove('active')); el.classList.add('active'); }
     };
 
     window.runPicker = function(btn) {
         if (isLocked) return;
-        var widget = btn.closest('.widget-picker');
-        var maxVal = parseInt(widget.querySelector('input').value) || 30;
-        var display = widget.querySelector('.picker-display');
-        btn.disabled = true;
-
-        var count = 0;
+        var widget = btn.closest('.widget-picker'); var maxVal = parseInt(widget.querySelector('input').value) || 30; var display = widget.querySelector('.picker-display');
+        btn.disabled = true; var count = 0;
         var interval = setInterval(function() {
-            display.innerText = Math.floor(Math.random() * maxVal) + 1;
-            count++;
-            if (count > 20) {
-                clearInterval(interval);
-                btn.disabled = false;
-                var finalNum = Math.floor(Math.random() * maxVal) + 1;
-                display.innerText = finalNum;
-                display.style.color = '#f1c40f';
-                setTimeout(() => display.style.color = '', 1000);
-            }
+            display.innerText = Math.floor(Math.random() * maxVal) + 1; count++;
+            if (count > 20) { clearInterval(interval); btn.disabled = false; display.innerText = Math.floor(Math.random() * maxVal) + 1; display.style.color = '#f1c40f'; setTimeout(() => display.style.color = '', 1000); }
         }, 80);
     };
 
     window.zoomText = function(btn, d) { var txt = btn.closest('.widget').querySelector('textarea'); var s = parseInt(window.getComputedStyle(txt).fontSize) || 16; txt.style.fontSize = (s + d) + 'px'; };
-
     function makeDraggable(el) {
         var h = el.querySelector('.widget-handle');
         h.addEventListener('mousedown', function(e) {
@@ -624,7 +556,6 @@
         });
     }
 
-    // --- 5. 循環更新與初始化 ---
     function initResizableTable() {
         document.querySelectorAll('th').forEach(function(th) {
             var resizer = document.createElement('div'); resizer.className = 'resizer'; th.appendChild(resizer);
@@ -643,17 +574,12 @@
         var timeStr = now.toTimeString().split(' ')[0];
         document.querySelectorAll('.clock-digit').forEach(function(c) { c.innerText = timeStr; });
         document.getElementById('mobile-clock-header').innerText = timeStr;
-
         document.querySelectorAll('.widget-analog').forEach(clock => {
             const h = now.getHours() % 12, m = now.getMinutes(), s = now.getSeconds();
-            const hDeg = (h * 30) + (m / 2);
-            const mDeg = (m * 6);
-            const sDeg = (s * 6);
-            clock.querySelector('.hand-hour').style.transform = `rotate(${hDeg}deg)`;
-            clock.querySelector('.hand-min').style.transform = `rotate(${mDeg}deg)`;
-            clock.querySelector('.hand-sec').style.transform = `rotate(${sDeg}deg)`;
+            clock.querySelector('.hand-hour').style.transform = `rotate(${(h * 30) + (m / 2)}deg)`;
+            clock.querySelector('.hand-min').style.transform = `rotate(${(m * 6)}deg)`;
+            clock.querySelector('.hand-sec').style.transform = `rotate(${(s * 6)}deg)`;
         });
-
         document.querySelectorAll('#exam-tbody tr').forEach(function(row) {
             try {
                 var times = row.cells[1].innerText.split('-');
@@ -666,10 +592,7 @@
             } catch(e) {}
         });
     }, 1000);
-
     window.onclick = function() { var m = document.getElementById('bg-selector'); if(m) m.style.display='none'; };
-    initResizableTable();
 </script>
 </body>
-
 </html>
