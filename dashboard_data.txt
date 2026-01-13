@@ -19,49 +19,49 @@
       ],
       "table": [
         {
-          "subject": "國文",
+          "subject": "自習",
           "time": "08:15-09:00",
           "bold": false,
           "color": "rgb(10, 10, 10)"
         },
         {
-          "subject": "英文",
+          "subject": "自習",
           "time": "09:10-09:55",
           "bold": false,
           "color": "rgb(0, 0, 0)"
         },
         {
-          "subject": "自習",
+          "subject": "地理",
           "time": "10:05-10:50",
           "bold": false,
           "color": "rgb(0, 0, 0)"
         },
         {
-          "subject": "數學",
+          "subject": "自習",
           "time": "11:00-11:45",
           "bold": false,
           "color": ""
         },
         {
-          "subject": "自習",
+          "subject": "國文",
           "time": "13:00-13:45",
           "bold": false,
           "color": ""
         },
         {
-          "subject": "社會",
-          "time": "1355:00-14:40",
-          "bold": false,
-          "color": ""
-        },
-        {
           "subject": "自習",
-          "time": "14:55-15:40",
+          "time": "13:55-14:40",
           "bold": false,
           "color": ""
         },
         {
-          "subject": "自然",
+          "subject": "數學",
+          "time": "14:50-15:35",
+          "bold": false,
+          "color": ""
+        },
+        {
+          "subject": "放學",
           "time": "15:50-16:35",
           "bold": false,
           "color": ""
@@ -131,49 +131,49 @@
       ],
       "table": [
         {
-          "subject": "國文",
+          "subject": "自然",
           "time": "08:15-09:00",
-          "bold": true,
-          "color": "rgb(231, 76, 60)"
+          "bold": false,
+          "color": "rgb(10, 10, 10)"
         },
         {
-          "subject": "英文",
+          "subject": "自習",
           "time": "09:10-09:55",
           "bold": false,
           "color": "rgb(0, 0, 0)"
         },
         {
-          "subject": "自習",
+          "subject": "歷史",
           "time": "10:05-10:50",
           "bold": false,
           "color": "rgb(0, 0, 0)"
         },
         {
-          "subject": "數學",
+          "subject": "自習",
           "time": "11:00-11:45",
           "bold": false,
           "color": ""
         },
         {
-          "subject": "自習",
+          "subject": "公民",
           "time": "13:00-13:45",
           "bold": false,
           "color": ""
         },
         {
-          "subject": "社會",
-          "time": "1355:00-14:40",
-          "bold": false,
-          "color": ""
-        },
-        {
           "subject": "自習",
-          "time": "14:55-15:40",
+          "time": "13:55-14:40",
           "bold": false,
           "color": ""
         },
         {
-          "subject": "自然",
+          "subject": "英文",
+          "time": "14:50-15:35",
+          "bold": false,
+          "color": ""
+        },
+        {
+          "subject": "放學",
           "time": "15:50-16:35",
           "bold": false,
           "color": ""
@@ -230,56 +230,7 @@
         "25%",
         "30%"
       ],
-      "table": [
-        {
-          "subject": "國文",
-          "time": "08:15-09:00",
-          "bold": true,
-          "color": "rgb(231, 76, 60)"
-        },
-        {
-          "subject": "英文",
-          "time": "09:10-09:55",
-          "bold": false,
-          "color": "rgb(0, 0, 0)"
-        },
-        {
-          "subject": "自習",
-          "time": "10:05-10:50",
-          "bold": false,
-          "color": "rgb(0, 0, 0)"
-        },
-        {
-          "subject": "數學",
-          "time": "11:00-11:45",
-          "bold": false,
-          "color": ""
-        },
-        {
-          "subject": "自習",
-          "time": "13:00-13:45",
-          "bold": false,
-          "color": ""
-        },
-        {
-          "subject": "社會",
-          "time": "1355:00-14:40",
-          "bold": false,
-          "color": ""
-        },
-        {
-          "subject": "自習",
-          "time": "14:55-15:40",
-          "bold": false,
-          "color": ""
-        },
-        {
-          "subject": "自然",
-          "time": "15:50-16:35",
-          "bold": false,
-          "color": ""
-        }
-      ],
+      "table": [],
       "widgets": [
         {
           "type": "analog",
@@ -328,5 +279,5 @@
       ]
     }
   },
-  "timestamp": 1768193087988
+  "timestamp": 1768264540462
 }
